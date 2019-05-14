@@ -49,9 +49,9 @@ namespace databaseconnection
         private void btnRunQuery_Click(object sender, EventArgs e)
         {
             string SQLQuery = "select * from customer where fname = @fname and lname = @lname;";
-            string[] SQLParms = new string[] { "@fname,jet", "lname,small"  };
+            string[] SQLParms = new string[] { "@fname,jet", "lname,small" };
 
-            SQLDataConn.ConnectToDatabase("select", SQLQuery, SQLParms);
+            SQLDataConn.ConnectToDatabase("query", SQLQuery, SQLParms);
 
             DataSet dataresults = new DataSet();
             dataresults = SQLDataConn.dataresults;

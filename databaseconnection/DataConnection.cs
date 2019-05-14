@@ -107,9 +107,26 @@ namespace databaseconnection
                             conn.Close();
                             sqlDataAdap.Dispose();
                         }
+                        else if (QueryType == "insert")
+                        {
+                            conn.Open();
+                            int modified = cmd.ExecuteNonQuery();
+
+                            if (modified == 0)
+                            {
+
+                                MessageBox.Show("Error Insert Contact System Administrator");
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Insert Successfully");
+                            }
+                            conn.Close();
+                        }
                         else if (QueryType == "update")
                         {
-
+                            conn.Open();
                             int modified = cmd.ExecuteNonQuery();
 
                             if (modified == 0)
@@ -122,11 +139,11 @@ namespace databaseconnection
                             {
                                 MessageBox.Show("Update Successfully");
                             }
-
+                            conn.Close();
                         }
                         else if (QueryType == "delete")
                         {
-
+                            conn.Open();
                             int modified = cmd.ExecuteNonQuery();
 
                             if (modified == 0)
@@ -141,6 +158,12 @@ namespace databaseconnection
                                 MessageBox.Show("Deleted Successfully");
 
                             }
+                            conn.Close();
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Incorrect SQL Paramter Specified In Code Contact System Administrator");
 
                         }
                     }
