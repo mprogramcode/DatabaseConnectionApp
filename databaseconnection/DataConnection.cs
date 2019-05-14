@@ -84,7 +84,7 @@ namespace databaseconnection
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
 
-                        cmd.CommandText = "Select logintime, result from loginlog where empid = @RESULT";
+                        cmd.CommandText = "select * from customer where fname = @fname and lname = @lname;";
 
                         cmd.Parameters.AddWithValue("@RESULT", "1");
 
