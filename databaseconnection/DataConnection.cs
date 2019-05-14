@@ -63,7 +63,7 @@ namespace databaseconnection
         public DataSet dataresults = new DataSet();
 
         //connects program to database
-        public void ConnectToDatabase()
+        public void ConnectToDatabase(string SQLQuery, string[] SQLQueryVales)
         {
             //get connections string to SQL Server
             string SQLServerName = "Data Source=" + Settings.Default["SQLSERVERNAME"].ToString();
@@ -84,10 +84,19 @@ namespace databaseconnection
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
 
-                        cmd.CommandText = "select * from customer where fname = @fname and lname = @lname;";
+                        cmd.CommandText = SQLQuery;
 
-                        cmd.Parameters.AddWithValue("@RESULT", "1");
+                        foreach (string item in SQLQueryVales)
+                        {
 
+                            string[] SQLParm = item.Split(new char[] { ',' });
+                            string flightcode = SQLParm[0] + SQLParm[1];
+
+                            cmd.Parameters.AddWithValue(SQLParm[0], SQLParm[1]);
+
+                        }
+
+                        
                         conn.Open();
 
                         SqlDataAdapter sqlDataAdap = new SqlDataAdapter(cmd);

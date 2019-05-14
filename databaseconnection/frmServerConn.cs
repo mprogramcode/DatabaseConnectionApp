@@ -48,15 +48,17 @@ namespace databaseconnection
 
         private void btnRunQuery_Click(object sender, EventArgs e)
         {
+            string SQLQuery = "select * from customer where fname = @fname and lname = @lname;";
+            string[] SQLParms = new string[] { "@fname,jet", "lname,small"  };
 
-            SQLDataConn.ConnectToDatabase();
+            SQLDataConn.ConnectToDatabase(SQLQuery, SQLParms);
 
             DataSet dataresults = new DataSet();
             dataresults = SQLDataConn.dataresults;
 
             DataRow Row = dataresults.Tables[0].Rows[0];
-            txtQuery1Box.Text = Row["logintime"].ToString();
-            TxtQuery2Box.Text = Row["result"].ToString();
+            txtQuery1Box.Text = Row["fname"].ToString();
+            TxtQuery2Box.Text = Row["lname"].ToString();
             rownum = 0;
 
         }
