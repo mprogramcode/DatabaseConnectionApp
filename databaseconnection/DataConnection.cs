@@ -63,7 +63,7 @@ namespace databaseconnection
         public DataSet dataresults = new DataSet();
 
         //connects program to database
-        public void ConnectToDatabase(string SQLQuery, string[] SQLQueryVales)
+        public void ConnectToDatabase(string QueryType, string SQLQuery, string[] SQLQueryVales)
         {
             //get connections string to SQL Server
             string SQLServerName = "Data Source=" + Settings.Default["SQLSERVERNAME"].ToString();
@@ -96,15 +96,53 @@ namespace databaseconnection
 
                         }
 
-                        
-                        conn.Open();
+                        if (QueryType == "query")
+                        {
 
-                        SqlDataAdapter sqlDataAdap = new SqlDataAdapter(cmd);
-                        sqlDataAdap.Fill(dataresults);
+                            conn.Open();
 
-                        conn.Close();
-                        sqlDataAdap.Dispose();
+                            SqlDataAdapter sqlDataAdap = new SqlDataAdapter(cmd);
+                            sqlDataAdap.Fill(dataresults);
 
+                            conn.Close();
+                            sqlDataAdap.Dispose();
+                        }
+                        else if (QueryType == "update")
+                        {
+
+                            int modified = cmd.ExecuteNonQuery();
+
+                            if (modified == 0)
+                            {
+
+                                MessageBox.Show("Error Updating Contact System Administrator");
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Update Successfully");
+                            }
+
+                        }
+                        else if (QueryType == "delete")
+                        {
+
+                            int modified = cmd.ExecuteNonQuery();
+
+                            if (modified == 0)
+                            {
+
+                                MessageBox.Show("Error Deleting Contact System Administrator");
+
+                            }
+                            else
+                            {
+
+                                MessageBox.Show("Deleted Successfully");
+
+                            }
+
+                        }
                     }
                 }
                 catch (SqlException e) when (e.Number == 53)
