@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using databaseconnection.Properties;
+using System.Data.SqlClient;
 
 namespace databaseconnection
 {
@@ -102,6 +103,19 @@ namespace databaseconnection
                 rownum -= 1;
 
             }
+
+        }
+
+        private void btndatagridquery_Click(object sender, EventArgs e)
+        {
+
+            string SQLQuery = "select * from customer";
+            string[] SQLParms = new string[] {  };
+
+            SQLDataConn.ConnectToDatabase("query", SQLQuery, SQLParms);
+
+            //adds the data from the dataset to the datagrid view on the GUI
+            dataGridView1.DataSource = SQLDataConn.dataresults.Tables[0];
 
         }
     }

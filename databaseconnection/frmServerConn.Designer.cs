@@ -34,6 +34,8 @@
             this.txtdatabasename = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnback = new System.Windows.Forms.Button();
+            this.btnfoward = new System.Windows.Forms.Button();
             this.TxtQuery2Box = new System.Windows.Forms.TextBox();
             this.txtQuery1Box = new System.Windows.Forms.TextBox();
             this.btnRunQuery = new System.Windows.Forms.Button();
@@ -41,11 +43,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnfoward = new System.Windows.Forms.Button();
-            this.btnback = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btndatagridquery = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtservername
@@ -82,6 +87,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(28, 12);
             this.tabControl1.Name = "tabControl1";
@@ -103,6 +109,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Query";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnback
+            // 
+            this.btnback.Location = new System.Drawing.Point(34, 153);
+            this.btnback.Name = "btnback";
+            this.btnback.Size = new System.Drawing.Size(75, 23);
+            this.btnback.TabIndex = 4;
+            this.btnback.Text = "BackButton";
+            this.btnback.UseVisualStyleBackColor = true;
+            this.btnback.Click += new System.EventHandler(this.btnback_Click);
+            // 
+            // btnfoward
+            // 
+            this.btnfoward.Location = new System.Drawing.Point(132, 153);
+            this.btnfoward.Name = "btnfoward";
+            this.btnfoward.Size = new System.Drawing.Size(85, 23);
+            this.btnfoward.TabIndex = 3;
+            this.btnfoward.Text = "FowardButton";
+            this.btnfoward.UseVisualStyleBackColor = true;
+            this.btnfoward.Click += new System.EventHandler(this.btnfoward_Click);
             // 
             // TxtQuery2Box
             // 
@@ -172,25 +198,34 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Server Name:";
             // 
-            // btnfoward
+            // tabPage3
             // 
-            this.btnfoward.Location = new System.Drawing.Point(132, 153);
-            this.btnfoward.Name = "btnfoward";
-            this.btnfoward.Size = new System.Drawing.Size(85, 23);
-            this.btnfoward.TabIndex = 3;
-            this.btnfoward.Text = "FowardButton";
-            this.btnfoward.UseVisualStyleBackColor = true;
-            this.btnfoward.Click += new System.EventHandler(this.btnfoward_Click);
+            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Controls.Add(this.btndatagridquery);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(468, 192);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "DataGrid";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnback
+            // btndatagridquery
             // 
-            this.btnback.Location = new System.Drawing.Point(34, 153);
-            this.btnback.Name = "btnback";
-            this.btnback.Size = new System.Drawing.Size(75, 23);
-            this.btnback.TabIndex = 4;
-            this.btnback.Text = "BackButton";
-            this.btnback.UseVisualStyleBackColor = true;
-            this.btnback.Click += new System.EventHandler(this.btnback_Click);
+            this.btndatagridquery.Location = new System.Drawing.Point(390, 159);
+            this.btndatagridquery.Name = "btndatagridquery";
+            this.btndatagridquery.Size = new System.Drawing.Size(75, 23);
+            this.btndatagridquery.TabIndex = 0;
+            this.btndatagridquery.Text = "Run Query";
+            this.btndatagridquery.UseVisualStyleBackColor = true;
+            this.btndatagridquery.Click += new System.EventHandler(this.btndatagridquery_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(453, 150);
+            this.dataGridView1.TabIndex = 1;
             // 
             // frmServerConn
             // 
@@ -206,6 +241,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -227,6 +264,9 @@
         private System.Windows.Forms.TextBox txtQuery1Box;
         private System.Windows.Forms.Button btnback;
         private System.Windows.Forms.Button btnfoward;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btndatagridquery;
     }
 }
 
