@@ -53,13 +53,19 @@ namespace databaseconnection
 
             SQLDataConn.ConnectToDatabase("query", SQLQuery, SQLParms);
 
+            //declares a dataset which the results of the SQL data is stored
             DataSet dataresults = new DataSet();
             dataresults = SQLDataConn.dataresults;
 
-            DataRow Row = dataresults.Tables[0].Rows[0];
-            txtQuery1Box.Text = Row["fname"].ToString();
-            TxtQuery2Box.Text = Row["lname"].ToString();
-            rownum = 0;
+            //checks to make sure the query return data
+            if (dataresults.Tables.Count > 0)
+            {
+                //Puts the data from the dataset into text boxes on the GUI
+                DataRow Row = dataresults.Tables[0].Rows[0];
+                txtQuery1Box.Text = Row["fname"].ToString();
+                TxtQuery2Box.Text = Row["lname"].ToString();
+                rownum = 0;
+            }
 
         }
 
